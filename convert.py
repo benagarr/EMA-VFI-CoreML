@@ -42,8 +42,12 @@ model.eval()
 
 print(f'=========================Start Generating=========================')
 
-I0 = cv2.imread('example/img1.jpg')
-I2 = cv2.imread('example/img2.jpg')
+#I0 = cv2.imread('example/img1.jpg')
+#I2 = cv2.imread('example/img2.jpg')
+
+I0 = cv2.imread('example/jp1-700.jpg')
+I2 = cv2.imread('example/jp2-700.jpg')
+
 
 I0_ = (torch.tensor(I0.transpose(2, 0, 1)).cuda() / 255.).unsqueeze(0)
 I2_ = (torch.tensor(I2.transpose(2, 0, 1)).cuda() / 255.).unsqueeze(0)
