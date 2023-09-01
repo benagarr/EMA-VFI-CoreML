@@ -51,7 +51,7 @@ I2_ = (torch.tensor(I2.transpose(2, 0, 1)).cuda() / 255.).unsqueeze(0)
 padder = InputPadder(I0_.shape, divisor=32)
 I0_, I2_ = padder.pad(I0_, I2_)
 
-imgs = torch.cat((img0, img1), 1)
+imgs = torch.cat((I0_, I2_), 1)
 traced_model = torch.jit.trace(model.net, imgs)
 
 
