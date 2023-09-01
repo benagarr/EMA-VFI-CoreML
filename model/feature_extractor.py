@@ -27,7 +27,7 @@ def pad_if_needed(x, size, window_size):
     n, h, w, c = size
     pad_h = math.ceil(h / window_size[0]) * window_size[0] - h
     pad_w = math.ceil(w / window_size[1]) * window_size[1] - w
-    print("pad_if_needed: size=", size, " pad_h=", pad_h, " pad_w" + pad_w)
+    print("pad_if_needed: size=", size, " pad_h=", pad_h, " pad_w", pad_w)
     if pad_h > 0 or pad_w > 0:  # center-pad the feature on H and W axes
         img_mask = torch.zeros((1, h+pad_h, w+pad_w, 1))  # 1 H W 1
         h_slices = (
