@@ -15,6 +15,7 @@ def window_partition(x, window_size):
 def window_reverse(windows, window_size, H, W):
     nwB, N, C = windows.shape
     windows = windows.view(-1, window_size[0], window_size[1], C)
+    print("WINDOW RESERVER, H=", H, "W=", W)
     B = int(nwB / (H * W / window_size[0] / window_size[1]))
     x = windows.view(
         B, H // window_size[0], W // window_size[1], window_size[0], window_size[1], -1
@@ -262,8 +263,8 @@ class MotionFormerBlock(nn.Module):
 
     def forward(self, x, cor, H, W, B):
         x = x.view(2*B, H, W, -1)
-        x_pad, mask = pad_if_needed5(x, x.size(), self.window_size)
-        cor_pad, _ = pad_if_needed5(cor, cor.size(), self.window_size)
+        x_pad, mask = pad_if_needed(x, x.size(), self.window_size)
+        cor_pad, _ = pad_if_needed(cor, cor.size(), self.window_size)
 
         if self.shift_size[0] or self.shift_size[1]:
             _, H_p, W_p, C = x_pad.shape
@@ -296,6 +297,7 @@ class MotionFormerBlock(nn.Module):
                     shift_mask = shift_mask.masked_fill(mask != 0, 
                                 float(-100.0))
                 self.register_buffer("attn_mask", shift_mask)
+                print("REGISTER BUFFER H=", H_p, "W=", W_p)
                 self.register_buffer("HW", torch.Tensor([H_p*W_p]))
         else: 
             shift_mask = mask
@@ -323,8 +325,8 @@ class MotionFormerBlock(nn.Module):
             x_back_win = torch.roll(x_back_win, shifts=(self.shift_size[0], self.shift_size[1]), dims=(1, 2))
             x_motion = torch.roll(x_motion, shifts=(self.shift_size[0], self.shift_size[1]), dims=(1, 2))
 
-        x = depad_if_needed5(x_back_win, x.size(), self.window_size).view(2*B, H * W, -1)
-        x_motion = depad_if_needed5(x_motion, cor.size(), self.window_size).view(2*B, H * W, -1)
+        x = depad_if_needed(x_back_win, x.size(), self.window_size).view(2*B, H * W, -1)
+        x_motion = depad_if_needed(x_motion, cor.size(), self.window_size).view(2*B, H * W, -1)
             
         x = x + self.drop_path(self.mlp(self.norm2(x), H, W))
         return x, x_motion
