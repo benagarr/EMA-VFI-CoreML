@@ -56,12 +56,19 @@ padder = InputPadder(I0_.shape, divisor=32)
 I0_, I2_ = padder.pad(I0_, I2_)
 
 imgs = torch.cat((I0_, I2_), 1)
-traced_model = torch.jit.trace(model.net, imgs, check_trace=False)
+#traced_model = torch.jit.trace(model.net, imgs, check_trace=False)
+#model_from_torch = ct.convert(traced_model,
+#                              convert_to="mlprogram",
+#                              inputs=[ct.TensorType(name="input",
+#                                                    shape=imgs.shape)])
 
-model_from_torch = ct.convert(traced_model,
-                              convert_to="mlprogram",
-                              inputs=[ct.TensorType(name="input",
-                                                    shape=imgs.shape)])
+
+scripted_model = torch.jit.script(model.net)
+
+model_from_torch = coremltools.converters.convert(
+  scripted_model,
+  inputs=[ct.TensorType(name="input",
+                        shape=imgs.shape)])
 
 model_from_torch.save('/content/result.mlpackage')
 
