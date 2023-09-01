@@ -61,7 +61,7 @@ traced_model = torch.jit.trace(model.net, imgs, check_trace=False)
 model_from_torch = ct.convert(traced_model,
                               convert_to="mlprogram",
                               inputs=[ct.TensorType(name="input",
-                                                    shape=example_input.shape)])
+                                                    shape=imgs.shape)])
 
 
 #mid = (padder.unpad(model.inference(I0_, I2_, TTA=TTA, fast_TTA=TTA))[0].detach().cpu().numpy().transpose(1, 2, 0) * 255.0).astype(np.uint8)
