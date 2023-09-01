@@ -5,6 +5,7 @@ import torch
 import numpy as np
 import argparse
 from imageio import mimsave
+import coremltools
 
 '''==========import from our code=========='''
 sys.path.append('.')
@@ -36,7 +37,7 @@ else:
 model = Model(-1)
 model.load_model()
 model.eval()
-model.device()
+#model.device()
 
 
 print(f'=========================Start Generating=========================')
@@ -50,9 +51,14 @@ I2_ = (torch.tensor(I2.transpose(2, 0, 1)).cuda() / 255.).unsqueeze(0)
 padder = InputPadder(I0_.shape, divisor=32)
 I0_, I2_ = padder.pad(I0_, I2_)
 
-mid = (padder.unpad(model.inference(I0_, I2_, TTA=TTA, fast_TTA=TTA))[0].detach().cpu().numpy().transpose(1, 2, 0) * 255.0).astype(np.uint8)
-images = [I0[:, :, ::-1], mid[:, :, ::-1], I2[:, :, ::-1]]
-mimsave('example/out_2x.gif', images, fps=3)
+imgs = torch.cat((img0, img1), 1)
+traced_model = torch.jit.trace(model.net, imgs)
+
+
+
+#mid = (padder.unpad(model.inference(I0_, I2_, TTA=TTA, fast_TTA=TTA))[0].detach().cpu().numpy().transpose(1, 2, 0) * 255.0).astype(np.uint8)
+#images = [I0[:, :, ::-1], mid[:, :, ::-1], I2[:, :, ::-1]]
+#mimsave('example/out_2x.gif', images, fps=3)
 
 
 print(f'=========================Done=========================')
