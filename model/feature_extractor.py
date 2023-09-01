@@ -430,7 +430,7 @@ class CrossScalePatchEmbed(nn.Module):
         k = 0
         for i in range(len(xs)):
             for _ in range(int(2 ** i)):
-                ys.append(self.layers[k](xs[int(-1-i)]))
+                ys.append(self.layers[int(k)](xs[int(-1-i)]))
                 k += 1
         x = self.proj(torch.cat(ys,1))
         _, _, H, W = x.shape
