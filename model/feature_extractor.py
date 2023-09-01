@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 import math
 from timm.models.layers import DropPath, to_2tuple, trunc_normal_
+import traceback
 
 def window_partition(x, window_size):
     B, H, W, C = x.shape
@@ -79,6 +80,8 @@ def pad_if_needed(x, size, window_size):
     pad_h = math.ceil(h / window_size[0]) * window_size[0] - h
     pad_w = math.ceil(w / window_size[1]) * window_size[1] - w
     print("pad_if_needed: size=", size, " pad_h=", pad_h, " pad_w", pad_w)
+    traceback.print_stack()
+    
     if pad_h > 0 or pad_w > 0:  # center-pad the feature on H and W axes
         img_mask = torch.zeros((1, h+pad_h, w+pad_w, 1))  # 1 H W 1
         h_slices = (
