@@ -56,7 +56,7 @@ padder = InputPadder(I0_.shape, divisor=32)
 I0_, I2_ = padder.pad(I0_, I2_)
 
 imgs = torch.cat((I0_, I2_), 1)
-traced_model = torch.jit.trace(model.net, imgs)
+traced_model = torch.jit.trace(model.net, imgs, check_trace=False)
 
 
 
