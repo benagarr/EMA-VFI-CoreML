@@ -1,0 +1,188 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXFileReference section */
+		1962EFE72AA24C6400D9A17C /* demo_2x.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = demo_2x.py; path = ../demo_2x.py; sourceTree = "<group>"; };
+		1962EFE82AA24C6400D9A17C /* demo_Nx.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = demo_Nx.py; path = ../demo_Nx.py; sourceTree = "<group>"; };
+		1962EFE92AA24C6400D9A17C /* Trainer.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = Trainer.py; path = ../Trainer.py; sourceTree = "<group>"; };
+		1962EFEA2AA24C6400D9A17C /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		1962EFEC2AA24C6400D9A17C /* img2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img2.jpg; sourceTree = "<group>"; };
+		1962EFED2AA24C6400D9A17C /* img1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img1.jpg; sourceTree = "<group>"; };
+		1962EFEE2AA24C6400D9A17C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		1962EFEF2AA24C6400D9A17C /* config.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = config.py; path = ../config.py; sourceTree = "<group>"; };
+		1962EFF12AA24C6400D9A17C /* TimeTest.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = TimeTest.py; sourceTree = "<group>"; };
+		1962EFF22AA24C6400D9A17C /* Vimeo90K.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = Vimeo90K.py; sourceTree = "<group>"; };
+		1962EFF32AA24C6400D9A17C /* MiddleBury.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = MiddleBury.py; sourceTree = "<group>"; };
+		1962EFF42AA24C6400D9A17C /* HD_4X.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = HD_4X.py; sourceTree = "<group>"; };
+		1962EFF62AA24C6400D9A17C /* pytorch_msssim.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = pytorch_msssim.py; sourceTree = "<group>"; };
+		1962EFF72AA24C6400D9A17C /* yuv_frame_io.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = yuv_frame_io.py; sourceTree = "<group>"; };
+		1962EFF82AA24C6400D9A17C /* padder.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = padder.py; sourceTree = "<group>"; };
+		1962EFF92AA24C6400D9A17C /* UCF101.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = UCF101.py; sourceTree = "<group>"; };
+		1962EFFA2AA24C6400D9A17C /* Xiph.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = Xiph.py; sourceTree = "<group>"; };
+		1962EFFB2AA24C6400D9A17C /* XTest_8X.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = XTest_8X.py; sourceTree = "<group>"; };
+		1962EFFC2AA24C6400D9A17C /* SNU_FILM.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = SNU_FILM.py; sourceTree = "<group>"; };
+		1962EFFD2AA24C6400D9A17C /* dataset.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = dataset.py; path = ../dataset.py; sourceTree = "<group>"; };
+		1962EFFE2AA24C6400D9A17C /* train.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = train.py; path = ../train.py; sourceTree = "<group>"; };
+		1962F0002AA24C6400D9A17C /* EMA-VFI.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EMA-VFI.png"; sourceTree = "<group>"; };
+		1962F0012AA24C6400D9A17C /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time.png; sourceTree = "<group>"; };
+		1962F0022AA24C6400D9A17C /* 2x_results.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2x_results.png; sourceTree = "<group>"; };
+		1962F0032AA24C6400D9A17C /* 4x_results.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4x_results.png; sourceTree = "<group>"; };
+		1962F0042AA24C6400D9A17C /* arb_inter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arb_inter.png; sourceTree = "<group>"; };
+		1962F0052AA24C6400D9A17C /* out_Nx.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = out_Nx.gif; sourceTree = "<group>"; };
+		1962F0062AA24C6400D9A17C /* out_2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = out_2x.gif; sourceTree = "<group>"; };
+		1962F0072AA24C6400D9A17C /* fix_inter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fix_inter.png; sourceTree = "<group>"; };
+		1962F0092AA24C6400D9A17C /* refine.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = refine.py; sourceTree = "<group>"; };
+		1962F00A2AA24C6400D9A17C /* __init__.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = __init__.py; sourceTree = "<group>"; };
+		1962F00B2AA24C6400D9A17C /* loss.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = loss.py; sourceTree = "<group>"; };
+		1962F00C2AA24C6400D9A17C /* flow_estimation.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = flow_estimation.py; sourceTree = "<group>"; };
+		1962F00D2AA24C6400D9A17C /* feature_extractor.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = feature_extractor.py; sourceTree = "<group>"; };
+		1962F00E2AA24C6400D9A17C /* warplayer.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = warplayer.py; sourceTree = "<group>"; };
+		1962F00F2AA24C8C00D9A17C /* convert.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = convert.py; path = ../convert.py; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		1962EFE02AA24C3D00D9A17C = {
+			isa = PBXGroup;
+			children = (
+				1962EFF02AA24C6400D9A17C /* benchmark */,
+				1962EFEF2AA24C6400D9A17C /* config.py */,
+				1962EFFD2AA24C6400D9A17C /* dataset.py */,
+				1962EFE72AA24C6400D9A17C /* demo_2x.py */,
+				1962F00F2AA24C8C00D9A17C /* convert.py */,
+				1962EFE82AA24C6400D9A17C /* demo_Nx.py */,
+				1962EFEB2AA24C6400D9A17C /* example */,
+				1962EFFF2AA24C6400D9A17C /* figs */,
+				1962EFEA2AA24C6400D9A17C /* LICENSE */,
+				1962F0082AA24C6400D9A17C /* model */,
+				1962EFEE2AA24C6400D9A17C /* README.md */,
+				1962EFFE2AA24C6400D9A17C /* train.py */,
+				1962EFE92AA24C6400D9A17C /* Trainer.py */,
+			);
+			sourceTree = "<group>";
+		};
+		1962EFEB2AA24C6400D9A17C /* example */ = {
+			isa = PBXGroup;
+			children = (
+				1962EFEC2AA24C6400D9A17C /* img2.jpg */,
+				1962EFED2AA24C6400D9A17C /* img1.jpg */,
+			);
+			name = example;
+			path = ../example;
+			sourceTree = "<group>";
+		};
+		1962EFF02AA24C6400D9A17C /* benchmark */ = {
+			isa = PBXGroup;
+			children = (
+				1962EFF12AA24C6400D9A17C /* TimeTest.py */,
+				1962EFF22AA24C6400D9A17C /* Vimeo90K.py */,
+				1962EFF32AA24C6400D9A17C /* MiddleBury.py */,
+				1962EFF42AA24C6400D9A17C /* HD_4X.py */,
+				1962EFF52AA24C6400D9A17C /* utils */,
+				1962EFF92AA24C6400D9A17C /* UCF101.py */,
+				1962EFFA2AA24C6400D9A17C /* Xiph.py */,
+				1962EFFB2AA24C6400D9A17C /* XTest_8X.py */,
+				1962EFFC2AA24C6400D9A17C /* SNU_FILM.py */,
+			);
+			name = benchmark;
+			path = ../benchmark;
+			sourceTree = "<group>";
+		};
+		1962EFF52AA24C6400D9A17C /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				1962EFF62AA24C6400D9A17C /* pytorch_msssim.py */,
+				1962EFF72AA24C6400D9A17C /* yuv_frame_io.py */,
+				1962EFF82AA24C6400D9A17C /* padder.py */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		1962EFFF2AA24C6400D9A17C /* figs */ = {
+			isa = PBXGroup;
+			children = (
+				1962F0002AA24C6400D9A17C /* EMA-VFI.png */,
+				1962F0012AA24C6400D9A17C /* time.png */,
+				1962F0022AA24C6400D9A17C /* 2x_results.png */,
+				1962F0032AA24C6400D9A17C /* 4x_results.png */,
+				1962F0042AA24C6400D9A17C /* arb_inter.png */,
+				1962F0052AA24C6400D9A17C /* out_Nx.gif */,
+				1962F0062AA24C6400D9A17C /* out_2x.gif */,
+				1962F0072AA24C6400D9A17C /* fix_inter.png */,
+			);
+			name = figs;
+			path = ../figs;
+			sourceTree = "<group>";
+		};
+		1962F0082AA24C6400D9A17C /* model */ = {
+			isa = PBXGroup;
+			children = (
+				1962F0092AA24C6400D9A17C /* refine.py */,
+				1962F00A2AA24C6400D9A17C /* __init__.py */,
+				1962F00B2AA24C6400D9A17C /* loss.py */,
+				1962F00C2AA24C6400D9A17C /* flow_estimation.py */,
+				1962F00D2AA24C6400D9A17C /* feature_extractor.py */,
+				1962F00E2AA24C6400D9A17C /* warplayer.py */,
+			);
+			name = model;
+			path = ../model;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		1962EFE12AA24C3D00D9A17C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1430;
+			};
+			buildConfigurationList = 1962EFE42AA24C3D00D9A17C /* Build configuration list for PBXProject "FrameInterpolation" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1962EFE02AA24C3D00D9A17C;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		1962EFE52AA24C3D00D9A17C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		1962EFE62AA24C3D00D9A17C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1962EFE42AA24C3D00D9A17C /* Build configuration list for PBXProject "FrameInterpolation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1962EFE52AA24C3D00D9A17C /* Debug */,
+				1962EFE62AA24C3D00D9A17C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1962EFE12AA24C3D00D9A17C /* Project object */;
+}
