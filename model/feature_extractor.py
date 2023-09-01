@@ -22,6 +22,56 @@ def window_reverse(windows, window_size, H, W):
     x = x.permute(0, 1, 3, 2, 4, 5).contiguous().view(B, H, W, -1)
     return x
 
+def pad_if_needed5(x, size, window_size):
+    n, h, w, c = size
+    
+    pad_h = 5
+    pad_w = 5
+#    pad_h = math.ceil(h / window_size[0]) * window_size[0] - h
+#    pad_w = math.ceil(w / window_size[1]) * window_size[1] - w
+#    print("pad_if_needed: size=", size, " pad_h=", pad_h, " pad_w", pad_w)
+    if pad_h > 0 or pad_w > 0:  # center-pad the feature on H and W axes
+        img_mask = torch.zeros((1, h+pad_h, w+pad_w, 1))  # 1 H W 1
+        h_slices = (
+            slice(0, pad_h//2),
+            slice(pad_h//2, h+pad_h//2),
+            slice(h+pad_h//2, None),
+        )
+        w_slices = (
+            slice(0, pad_w//2),
+            slice(pad_w//2, w+pad_w//2),
+            slice(w+pad_w//2, None),
+        )
+        cnt = 0
+        for h in h_slices:
+            for w in w_slices:
+                img_mask[:, h, w, :] = cnt
+                cnt += 1
+
+        mask_windows = window_partition(
+            img_mask, window_size
+        )  # nW, window_size*window_size, 1
+        mask_windows = mask_windows.squeeze(-1)
+        attn_mask = mask_windows.unsqueeze(1) - mask_windows.unsqueeze(2)
+        attn_mask = attn_mask.masked_fill(
+            attn_mask != 0, float(-100.0)
+        ).masked_fill(attn_mask == 0, float(0.0))
+        return nn.functional.pad(
+            x,
+            (0, 0, pad_w // 2, pad_w - pad_w // 2, pad_h // 2, pad_h - pad_h // 2),
+        ), attn_mask
+    return x, None
+
+def depad_if_needed5(x, size, window_size):
+    n, h, w, c = size
+#    pad_h = math.ceil(h / window_size[0]) * window_size[0] - h
+#    pad_w = math.ceil(w / window_size[1]) * window_size[1] - w
+    pad_h = 5
+    pad_w = 5
+
+    if pad_h > 0 or pad_w > 0:  # remove the center-padding on feature
+        return x[:, pad_h // 2 : pad_h // 2 + h, pad_w // 2 : pad_w // 2 + w, :].contiguous()
+    return x
 
 def pad_if_needed(x, size, window_size):
     n, h, w, c = size
@@ -212,8 +262,8 @@ class MotionFormerBlock(nn.Module):
 
     def forward(self, x, cor, H, W, B):
         x = x.view(2*B, H, W, -1)
-        x_pad, mask = pad_if_needed(x, x.size(), self.window_size)
-        cor_pad, _ = pad_if_needed(cor, cor.size(), self.window_size)
+        x_pad, mask = pad_if_needed5(x, x.size(), self.window_size)
+        cor_pad, _ = pad_if_needed5(cor, cor.size(), self.window_size)
 
         if self.shift_size[0] or self.shift_size[1]:
             _, H_p, W_p, C = x_pad.shape
@@ -273,8 +323,8 @@ class MotionFormerBlock(nn.Module):
             x_back_win = torch.roll(x_back_win, shifts=(self.shift_size[0], self.shift_size[1]), dims=(1, 2))
             x_motion = torch.roll(x_motion, shifts=(self.shift_size[0], self.shift_size[1]), dims=(1, 2))
 
-        x = depad_if_needed(x_back_win, x.size(), self.window_size).view(2*B, H * W, -1)
-        x_motion = depad_if_needed(x_motion, cor.size(), self.window_size).view(2*B, H * W, -1)
+        x = depad_if_needed5(x_back_win, x.size(), self.window_size).view(2*B, H * W, -1)
+        x_motion = depad_if_needed5(x_motion, cor.size(), self.window_size).view(2*B, H * W, -1)
             
         x = x + self.drop_path(self.mlp(self.norm2(x), H, W))
         return x, x_motion
