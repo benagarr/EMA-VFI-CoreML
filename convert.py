@@ -5,7 +5,7 @@ import torch
 import numpy as np
 import argparse
 from imageio import mimsave
-import coremltools
+import coremltools as ct
 
 '''==========import from our code=========='''
 sys.path.append('.')
