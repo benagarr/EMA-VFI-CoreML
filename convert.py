@@ -73,7 +73,7 @@ model_from_torch = ct.convert(traced_model,
 #  inputs=[ct.TensorType(name="input",
 #                        shape=imgs.shape)])
 
-#model_from_torch.save('/content/result.mlpackage')
+model_from_torch.save('/content/result.mlpackage')
 
 #mid = (padder.unpad(model.inference(I0_, I2_, TTA=TTA, fast_TTA=TTA))[0].detach().cpu().numpy().transpose(1, 2, 0) * 255.0).astype(np.uint8)
 #images = [I0[:, :, ::-1], mid[:, :, ::-1], I2[:, :, ::-1]]
