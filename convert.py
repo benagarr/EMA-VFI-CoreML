@@ -6,6 +6,7 @@ import numpy as np
 import argparse
 from imageio import mimsave
 import coremltools as ct
+import coremltools.optimize.coreml as cto
 
 '''==========import from our code=========='''
 sys.path.append('.')
@@ -72,6 +73,15 @@ model_from_torch = ct.convert(traced_model,
                                                     shape=imgs.shape)])
 
 
+# define op config
+op_config = cto.OpPalettizerConfig(mode="kmeans", nbits=6)
+
+# define optimization config by applying the op config globally to all ops
+config = cto.OptimizationConfig(global_config=op_config)
+
+# palettize weights
+compressed_mlmodel = cto.palettize_weights(model_from_torch, config)
+
 
 #scripted_model = torch.jit.script(model.net)
 
@@ -80,7 +90,8 @@ model_from_torch = ct.convert(traced_model,
 #  inputs=[ct.TensorType(name="input",
 #                        shape=imgs.shape)])
 
-model_from_torch.save('/content/result.mlpackage')
+#model_from_torch.save('/content/result.mlpackage')
+compressed_mlmodel.save('/content/result.mlpackage')
 
 #mid = (padder.unpad(model.inference(I0_, I2_, TTA=TTA, fast_TTA=TTA))[0].detach().cpu().numpy().transpose(1, 2, 0) * 255.0).astype(np.uint8)
 #images = [I0[:, :, ::-1], mid[:, :, ::-1], I2[:, :, ::-1]]
