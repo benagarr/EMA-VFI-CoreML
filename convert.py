@@ -70,7 +70,8 @@ model_from_torch = ct.convert(traced_model,
                               convert_to="mlprogram",
                               compute_precision=ct.precision.FLOAT16,
                               inputs=[ct.TensorType(name="input",
-                                                    shape=imgs.shape)])
+                                                    shape=imgs.shape)],
+                              outputs=[ct.ImageType()])
 
 model_compressed = ct.compression_utils.affine_quantize_weights(model_from_torch)
 
