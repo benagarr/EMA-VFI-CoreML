@@ -106,8 +106,10 @@ class MultiScaleFlow(nn.Module):
 
 
     # Actually consist of 'calculate_flow' and 'coraseWarp_and_Refine'
-    def forward(self, x, timestep=0.5):
-        img0, img1 = x[:, :3], x[:, 3:6]
+    def forward(self, x1, x2, timestep=0.5):
+#        img0, img1 = x[:, :3], x[:, 3:6]
+        img0 = x1
+        img1 = x2
         B = x.size(0)
         flow_list = []
         merged = []

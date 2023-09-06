@@ -87,7 +87,7 @@ class Model:
         if fast_TTA:
             imgs_ = imgs.flip(2).flip(3)
             input = torch.cat((imgs, imgs_), 0)
-            _, _, _, preds = self.net(input, timestep=timestep)
+            _, _, _, preds = self.net(img0, img1, timestep=timestep)
             return (preds[0] + preds[1].flip(1).flip(2)).unsqueeze(0) / 2.
 
         _, _, _, pred = self.net(imgs, timestep=timestep)
