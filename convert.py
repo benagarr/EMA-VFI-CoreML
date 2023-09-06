@@ -69,10 +69,10 @@ traced_model = torch.jit.trace(model.net, (I0_, I2_), check_trace=check_trace)
 model_from_torch = ct.convert(traced_model,
                               convert_to="mlprogram",
                               compute_precision=ct.precision.FLOAT16,
-                              inputs=[ct.TensorType(name="input1",
+                              inputs=[ct.ImageType(name="input1",
                                                     shape=I0_.shape,
                                                     color_layout=ct.colorlayout.RGB,),
-                                                    ct.TensorType(name="input2",
+                                                    ct.ImageType(name="input2",
                                                     shape=I0_.shape,
                                                     color_layout=ct.colorlayout.RGB,)])
                                                     
