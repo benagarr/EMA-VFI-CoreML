@@ -60,7 +60,7 @@ I0_, I2_ = padder.pad(I0_, I2_)
 
 imgs = torch.cat((I0_, I2_), 1)
 check_trace = False
-traced_model = torch.jit.trace(model.net, imgs, check_trace=check_trace)
+traced_model = torch.jit.trace(model.net, I0_, I2_, check_trace=check_trace)
 #model_from_torch = ct.convert(traced_model,
 #                              convert_to="mlprogram",
 #                              inputs=[ct.TensorType(name="input",
