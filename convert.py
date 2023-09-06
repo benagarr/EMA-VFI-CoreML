@@ -84,12 +84,12 @@ model_from_torch = ct.convert(traced_model,
                               outputs=[ct.ImageType(name="pred")])
 
 # save without compressing
-model_from_torch.save('/content/result.mlpackage')
+#model_from_torch.save('/content/result.mlpackage')
 
 
 # Compress it
-#model_compressed = ct.compression_utils.affine_quantize_weights(model_from_torch)
-#model_compressed.save('/content/result.mlpackage')
+model_compressed = ct.compression_utils.affine_quantize_weights(model_from_torch)
+model_compressed.save('/content/result.mlpackage')
 
 # Compress newer version (beta)
 # define op config
