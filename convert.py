@@ -70,9 +70,11 @@ model_from_torch = ct.convert(traced_model,
                               convert_to="mlprogram",
                               compute_precision=ct.precision.FLOAT16,
                               inputs=[ct.TensorType(name="input1",
-                                                    shape=I0_.shape),
+                                                    shape=I0_.shape,
+                                                    color_layout=ct.colorlayout.RGB,),
                                                     ct.TensorType(name="input2",
-                                                    shape=I0_.shape)])
+                                                    shape=I0_.shape,
+                                                    color_layout=ct.colorlayout.RGB,)])
                                                     
 #                              outputs=[ct.ImageType(name="flow_1"), ct.ImageType(name="flow_5",
 #                                                    color_layout=ct.colorlayout.RGB,), ct.ImageType(name="var_2379",
