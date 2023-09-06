@@ -72,15 +72,16 @@ model_from_torch = ct.convert(traced_model,
                               inputs=[ct.TensorType(name="input1",
                                                     shape=I0_.shape),
                                                     ct.TensorType(name="input2",
-                                                    shape=I0_.shape)],
-                              outputs=[ct.ImageType(name="flow_1"), ct.ImageType(name="flow_5",
-                                                    color_layout=ct.colorlayout.RGB,), ct.ImageType(name="var_2379",
-                                                    color_layout=ct.colorlayout.RGB,),
-                                                        ct.ImageType(name="var_2629",
-                                                    color_layout=ct.colorlayout.RGB,),  ct.ImageType(name="var_2765",
-                                                    color_layout=ct.colorlayout.RGB,), ct.ImageType(name="var_2938",
-                                                    color_layout=ct.colorlayout.RGB,), ct.ImageType(name="image",
-                                                    color_layout=ct.colorlayout.RGB,)])
+                                                    shape=I0_.shape)])
+                                                    
+#                              outputs=[ct.ImageType(name="flow_1"), ct.ImageType(name="flow_5",
+#                                                    color_layout=ct.colorlayout.RGB,), ct.ImageType(name="var_2379",
+#                                                    color_layout=ct.colorlayout.RGB,),
+#                                                        ct.ImageType(name="var_2629",
+#                                                    color_layout=ct.colorlayout.RGB,),  ct.ImageType(name="var_2765",
+#                                                    color_layout=ct.colorlayout.RGB,), ct.ImageType(name="var_2938",
+#                                                    color_layout=ct.colorlayout.RGB,), ct.ImageType(name="image",
+#                                                    color_layout=ct.colorlayout.RGB,)])
 
 
 model_compressed = ct.compression_utils.affine_quantize_weights(model_from_torch)
