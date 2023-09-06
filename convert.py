@@ -92,7 +92,7 @@ model_from_torch = ct.convert(traced_model,
 #                                                    color_layout=ct.colorlayout.RGB,)])
 
 
-model_compressed = ct.compression_utils.affine_quantize_weights(model_from_torch)
+# model_compressed = ct.compression_utils.affine_quantize_weights(model_from_torch)
 
 # define op config
 #op_config = cto.OpPalettizerConfig(mode="kmeans", nbits=6)
