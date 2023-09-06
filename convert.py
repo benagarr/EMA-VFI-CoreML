@@ -80,16 +80,8 @@ model_from_torch = ct.convert(traced_model,
                                                     ct.ImageType(name="input2",
                                                     shape=I0_.shape,
                                                     color_layout=ct.colorlayout.RGB,
-                                                    scale=scale)])
-                                                    
-#                              outputs=[ct.ImageType(name="flow_1"), ct.ImageType(name="flow_5",
-#                                                    color_layout=ct.colorlayout.RGB,), ct.ImageType(name="var_2379",
-#                                                    color_layout=ct.colorlayout.RGB,),
-#                                                        ct.ImageType(name="var_2629",
-#                                                    color_layout=ct.colorlayout.RGB,),  ct.ImageType(name="var_2765",
-#                                                    color_layout=ct.colorlayout.RGB,), ct.ImageType(name="var_2938",
-#                                                    color_layout=ct.colorlayout.RGB,), ct.ImageType(name="image",
-#                                                    color_layout=ct.colorlayout.RGB,)])
+                                                    scale=scale)],
+                              outputs=[ct.ImageType(name="pred"])
 
 # save without compressing
 model_from_torch.save('/content/result.mlpackage')
