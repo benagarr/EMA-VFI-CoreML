@@ -66,8 +66,9 @@ traced_model = torch.jit.trace(model.net, (I0_, I2_), check_trace=check_trace)
 #                              inputs=[ct.TensorType(name="input",
 #                                                    shape=imgs.shape)])
 
-scale = 1/(0.226*255.0)
-bias = [- 0.485/(0.229) , - 0.456/(0.224), - 0.406/(0.225)]
+#scale = 1/(0.226*255.0)
+scale = 1 / 255.0
+#bias = [- 0.485/(0.229) , - 0.456/(0.224), - 0.406/(0.225)]
 
 model_from_torch = ct.convert(traced_model,
                               convert_to="mlprogram",
@@ -75,11 +76,11 @@ model_from_torch = ct.convert(traced_model,
                               inputs=[ct.ImageType(name="input1",
                                                     shape=I0_.shape,
                                                     color_layout=ct.colorlayout.RGB,
-                                                    scale=scale, bias=bias),
+                                                    scale=scale),
                                                     ct.ImageType(name="input2",
                                                     shape=I0_.shape,
                                                     color_layout=ct.colorlayout.RGB,
-                                                    scale=scale, bias=bias)])
+                                                    scale=scale)])
                                                     
 #                              outputs=[ct.ImageType(name="flow_1"), ct.ImageType(name="flow_5",
 #                                                    color_layout=ct.colorlayout.RGB,), ct.ImageType(name="var_2379",
