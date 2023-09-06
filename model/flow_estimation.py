@@ -102,6 +102,8 @@ class MultiScaleFlow(nn.Module):
         mask_ = torch.sigmoid(mask)
         merged = warped_img0 * mask_ + warped_img1 * (1 - mask_)
         pred = torch.clamp(merged + res, 0, 1)
+        
+        print("PRED SIZE", pred.shape)
         return pred
 
 
