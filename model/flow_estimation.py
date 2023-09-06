@@ -141,4 +141,6 @@ class MultiScaleFlow(nn.Module):
         tmp = self.unet(img0, img1, warped_img0, warped_img1, mask, flow, c0, c1)
         res = tmp[:, :3] * 2 - 1
         pred = torch.clamp(merged[-1] + res, 0, 1)
+        
+        print("PRED SIZE", pred.shape)
         return flow_list, mask_list, merged, pred
