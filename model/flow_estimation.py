@@ -143,4 +143,5 @@ class MultiScaleFlow(nn.Module):
         pred = torch.clamp(merged[-1] + res, 0, 1)
         
         print("PRED SIZE", pred.shape)
-        return flow_list, mask_list, merged, pred
+#        return flow_list, mask_list, merged, pred
+        return pred
