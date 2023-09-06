@@ -110,7 +110,7 @@ class MultiScaleFlow(nn.Module):
 #        img0, img1 = x[:, :3], x[:, 3:6]
         img0 = x1
         img1 = x2
-        B = x.size(0)
+        B = x1.size(0)
         flow_list = []
         merged = []
         mask_list = []
