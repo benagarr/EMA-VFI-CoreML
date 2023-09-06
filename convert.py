@@ -72,8 +72,8 @@ model_from_torch = ct.convert(traced_model,
                               inputs=[ct.TensorType(name="input",
                                                     shape=imgs.shape)],
                               outputs=[ct.ImageType(name="flow_1",
-                                                    color_layout=ct.colorlayout.RGB,), ct.ImageType(name="flow_5"
-                                                    color_layout=ct.colorlayout.RGB,), ct.ImageType(name="var_2379"
+                                                    color_layout=ct.colorlayout.RGB,), ct.ImageType(name="flow_5",
+                                                    color_layout=ct.colorlayout.RGB,), ct.ImageType(name="var_2379",
                                                     color_layout=ct.colorlayout.RGB,), ct.ImageType(name="var_2765",
                                                     color_layout=ct.colorlayout.RGB,), ct.ImageType(name="var_2938",
                                                     color_layout=ct.colorlayout.RGB,), ct.ImageType(name="image",
