@@ -55,6 +55,9 @@ padder = InputPadder(I0_.shape, divisor=32)
 I0_, I2_ = padder.pad(I0_, I2_)
 
 mid = (padder.unpad(model.inference(I0_, I2_, TTA=TTA, fast_TTA=TTA))[0].detach().cpu().numpy().transpose(1, 2, 0) * 255.0).astype(np.uint8)
+
+print("Shape=", mid.shape)
+
 images = [I0[:, :, ::-1], mid[:, :, ::-1], I2[:, :, ::-1]]
 mimsave('example/out_2x.gif', images, duration=333)
 
