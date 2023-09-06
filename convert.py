@@ -91,9 +91,15 @@ model_from_torch = ct.convert(traced_model,
 #                                                    color_layout=ct.colorlayout.RGB,), ct.ImageType(name="image",
 #                                                    color_layout=ct.colorlayout.RGB,)])
 
+# save without compressing
+model_from_torch.save('/content/result.mlpackage')
 
-# model_compressed = ct.compression_utils.affine_quantize_weights(model_from_torch)
 
+# Compress it
+#model_compressed = ct.compression_utils.affine_quantize_weights(model_from_torch)
+#model_compressed.save('/content/result.mlpackage')
+
+# Compress newer version (beta)
 # define op config
 #op_config = cto.OpPalettizerConfig(mode="kmeans", nbits=6)
 
@@ -111,8 +117,6 @@ model_from_torch = ct.convert(traced_model,
 #  inputs=[ct.TensorType(name="input",
 #                        shape=imgs.shape)])
 
-#model_from_torch.save('/content/result.mlpackage')
-model_compressed.save('/content/result.mlpackage')
 
 #mid = (padder.unpad(model.inference(I0_, I2_, TTA=TTA, fast_TTA=TTA))[0].detach().cpu().numpy().transpose(1, 2, 0) * 255.0).astype(np.uint8)
 #images = [I0[:, :, ::-1], mid[:, :, ::-1], I2[:, :, ::-1]]
