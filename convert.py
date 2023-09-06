@@ -81,7 +81,7 @@ model_from_torch = ct.convert(traced_model,
                                                     shape=I0_.shape,
                                                     color_layout=ct.colorlayout.RGB,
                                                     scale=scale)],
-                              outputs=[ct.ImageType(name="pred", scale=scale)])
+                              outputs=[ct.ImageType(name="pred")])
 
 # save without compressing
 model_from_torch.save('/content/result.mlpackage')
