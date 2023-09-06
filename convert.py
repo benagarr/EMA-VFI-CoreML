@@ -72,18 +72,12 @@ model_from_torch = ct.convert(traced_model,
                               inputs=[ct.TensorType(name="input",
                                                     shape=imgs.shape)],
                               outputs=[ct.ImageType(name="flow_1",
-                                                    shape=[1,3,512,512],
-                                                    color_layout=ct.colorlayout.RGB,), ct.ImageType(name="flow_5",
-                                                    shape=[1,3,512,512],
-                                                    color_layout=ct.colorlayout.RGB,), ct.ImageType(name="var_2379",
-                                                    shape=[1,3,512,512],
+                                                    color_layout=ct.colorlayout.RGB,), ct.ImageType(name="flow_5"
+                                                    color_layout=ct.colorlayout.RGB,), ct.ImageType(name="var_2379"
                                                     color_layout=ct.colorlayout.RGB,), ct.ImageType(name="var_2765",
-                                                    shape=[1,3,512,512],
                                                     color_layout=ct.colorlayout.RGB,), ct.ImageType(name="var_2938",
-                                                    shape=[1,3,512,512],
                                                     color_layout=ct.colorlayout.RGB,), ct.ImageType(name="image",
-                                                    shape=[1,3,512,512],
-                                                    color_layout=ct.colorlayout.RGB,), ct.ImageType()])
+                                                    color_layout=ct.colorlayout.RGB,)])
 
 
 model_compressed = ct.compression_utils.affine_quantize_weights(model_from_torch)
