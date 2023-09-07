@@ -52,8 +52,11 @@ print(f'=========================Start Generating=========================')
 #I0 = cv2.imread('example/KC1-512.jpg')
 #I2 = cv2.imread('example/KC2-512.jpg')
 
-I0 = cv2.imread('example/horse1.jpg')
-I2 = cv2.imread('example/horse2.jpg')
+#I0 = cv2.imread('example/horse1.jpg')
+#I2 = cv2.imread('example/horse2.jpg')
+
+I0 = cv2.imread('example/horse1-2k.jpg')
+I2 = cv2.imread('example/horse2-2k.jpg')
 
 
 I0_ = (torch.tensor(I0.transpose(2, 0, 1)).cuda() / 255.).unsqueeze(0)
